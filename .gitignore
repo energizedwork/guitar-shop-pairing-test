@@ -7,3 +7,7 @@ build
 classes
 out/
 .DS_Store
+/target/
+.classpath
+.project
+.settings
