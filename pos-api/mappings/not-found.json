@@ -1,0 +1,7 @@
+{
+  "priority": 10,
+  "response": {
+    "status": 404,
+    "body": "Sorry, not found\n"
+  }
+}

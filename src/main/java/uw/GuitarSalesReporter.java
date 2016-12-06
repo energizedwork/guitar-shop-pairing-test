@@ -35,15 +35,16 @@ public class GuitarSalesReporter {
             categories.put(category, newTotal);
         }
 
-        ArrayList<Map.Entry<String, Integer>> entryList = new ArrayList<>(categories.entrySet());
-        Collections.sort(entryList, new Comparator<Map.Entry<String, Integer>>() {
-                @Override
-                public int compare(Map.Entry<String, Integer> o1, Map.Entry<String, Integer> o2) {
-                    return o2.getValue().compareTo(o1.getValue());
-                }
-        });
-
-        String mostPopularCategory = entryList.get(0).getKey();
+        int biggestSoFar = 0;
+        String mostPopularCategory = null;
+        for (Iterator<String> iterator = categories.keySet().iterator(); iterator.hasNext(); ) {
+            String key = iterator.next();
+            int quantity = categories.get(key);
+            if (quantity > biggestSoFar) {
+                mostPopularCategory = key;
+                biggestSoFar = quantity;
+            }
+        }
 
         System.out.println("############");
         System.out.println("Sales Report");

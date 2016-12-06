@@ -1,0 +1,10 @@
+{
+  "request": {
+    "urlPath": "/api/sales/period/1",
+    "method": "GET"
+  },
+  "response": {
+    "status": 200,
+    "bodyFileName": "period-1-sales.json"
+  }
+}
