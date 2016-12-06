@@ -1,1 +1,115 @@
-{}
+[
+  {
+    "time": "2016-11-18T12:31:33",
+    "item": "Deering 5 string",
+    "category": "Banjo",
+    "quantity": 1,
+    "priceEach": 89.0
+  },
+  {
+    "time": "2016-11-18T15:01:00",
+    "item": "Fender Telecaster",
+    "category": "Guitar",
+    "quantity": 1,
+    "priceEach": 699.99
+  },
+  {
+    "time": "2016-11-18T16:40:59",
+    "item": "Martin Smith Sporano",
+    "category": "Ukulele",
+    "quantity": 1,
+    "priceEach": 109.0
+  },
+  {
+    "time": "2016-11-19T12:31:36",
+    "item": "Dunlop plectrum",
+    "category": "Accessory",
+    "quantity": 5,
+    "priceEach": 0.5
+  },
+  {
+    "time": "2016-11-19T12:31:37",
+    "item": "Ernie ball light steel strings",
+    "category": "Strings",
+    "quantity": 12,
+    "priceEach": 1.2
+  },
+  null,
+  {
+    "time": "2016-11-21T11:11:11",
+    "item": "Epiphone Les Paul",
+    "category": "Guitar",
+    "quantity": 1,
+    "priceEach": 449.99
+  },
+  {
+    "time": "2016-11-21T11:50:15",
+    "item": "Ernie ball nylon strings",
+    "category": "Strings",
+    "quantity": 10,
+    "priceEach": 1.4
+  },
+  {
+    "time": "2016-11-21T12:30:40",
+    "item": "Jackson Soloist",
+    "category": "Guitar",
+    "quantity": 1,
+    "priceEach": 999.99
+  },
+  {
+    "time": "2016-11-22T12:11:42",
+    "item": "Ibanez Steve Vai 7 string",
+    "category": "Guitar",
+    "quantity": 1,
+    "priceEach": 2999.99
+  },
+  {
+    "time": "2016-11-22T12:45:43",
+    "item": "Deering 5 string",
+    "category": "Banjo",
+    "quantity": 1,
+    "priceEach": 89.0
+  },
+  {
+    "time": "2016-11-22T12:51:44",
+    "item": "Dunlop plectrum",
+    "category": "Accessory",
+    "quantity": 3,
+    "priceEach": 0.5
+  },
+  {
+    "time": "2016-11-23T10:09:40",
+    "item": "Ernie ball medium steel",
+    "category": "Strings",
+    "quantity": 1,
+    "priceEach": 1.2
+  },
+  {
+    "time": "2016-11-24T16:58:01",
+    "item": "Boss tuner",
+    "category": "Accessory",
+    "quantity": 1,
+    "priceEach": 29.99
+  },
+  {
+    "time": "2016-11-25T09:58:12",
+    "item": "Boss fuzzbox",
+    "category": "Accessory",
+    "quantity": 1,
+    "priceEach": 69.99
+  },
+  {
+    "time": "2016-11-25T11:32:22",
+    "item": "Deering 5 string",
+    "category": "Banjo",
+    "quantity": 1,
+    "priceEach": 89.0
+  },
+  {
+    "time": "2016-11-26T15:14:13",
+    "item": "Fender Telecaster",
+    "category": "Guitar",
+    "quantity": 1,
+    "priceEach": 699.99
+  }
+]
