@@ -41,6 +41,6 @@ Update the application so that it retrieves its sales records from this API.
 The shop owner finds the monospaced console reports to be dull and unappealing. They would like an HTML report to be
 generated instead.
 
-Add the ability to generate an HTML report. Bonus points if you can make it easy on the eye!
+Add the ability to generate an HTML report and write it to a file. Bonus points if you can make it easy on the eye!
 
 
