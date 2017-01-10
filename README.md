@@ -14,11 +14,19 @@ Take a look at the code. How could it be improved? How could it be made easier t
 
 Apply these changes to the code, explaining your decisions as you go.
 
+
+### HTML reporting
+The shop owner finds the monospaced console reports to be dull and unappealing. They would like an HTML report to be
+generated instead.
+
+Add the ability to generate an HTML report and write it to a file. Bonus points if you can make it easy on the eye!
+
 ### New reports
 The shop owner would like to know two additional things. Add these new sections to the report:
 
 * Their average weekly sales revenue
 * The most popular product to be sold on a Friday
+
 
 ### POS integration
 The new point of sale system exposes a JSON REST API from which you can fetch sales records.
@@ -36,11 +44,5 @@ Here's an example of how to fetch the same data as in the original CSV from the 
 
 Update the application so that it retrieves its sales records from this API.
 
-
-### HTML reporting
-The shop owner finds the monospaced console reports to be dull and unappealing. They would like an HTML report to be
-generated instead.
-
-Add the ability to generate an HTML report and write it to a file. Bonus points if you can make it easy on the eye!
 
 
