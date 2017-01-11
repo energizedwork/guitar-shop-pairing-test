@@ -1,0 +1,6 @@
+############
+Sales Report
+############
+
+Total sales: £6437.419999999999
+Most popular category: Strings
