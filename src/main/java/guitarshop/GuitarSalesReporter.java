@@ -1,15 +1,32 @@
 package guitarshop;
 
+import com.fasterxml.jackson.databind.node.ObjectNode;
+
 import java.io.File;
 import java.nio.file.Files;
 import java.util.*;
 
 public class GuitarSalesReporter {
 
+    public static final String TOTAL_SALES = "totalSales";
+    public static final String MOST_POPULAR_CATEGORY = "mostPopularCategory";
+
     public static void main(String[] args) throws Exception {
         File csvFile = new File("src/main/resources/sales.csv");
         List<String> lines = Files.readAllLines(csvFile.toPath());
 
+        Map<String, Object> results = generateReport(lines);
+
+        System.out.println("############");
+        System.out.println("Sales Report");
+        System.out.println("############");
+        System.out.println();
+        System.out.println("Total sales: £" + results.get(TOTAL_SALES));
+        System.out.println("Most popular category: " + results.get("mostPopularCategory"));
+
+    }
+
+    public static Map<String, Object> generateReport(List<String> lines) {
         double totalSales = 0d;
         for (int i = 1; i < lines.size(); i++) {
             String[] cells = lines.get(i).split(",");
@@ -28,7 +45,7 @@ public class GuitarSalesReporter {
             Integer existingCategoryCount = categories.get(category);
             int newTotal;
             if (existingCategoryCount != null) {
-                 newTotal = existingCategoryCount + quantity;
+                newTotal = existingCategoryCount + quantity;
             } else {
                 newTotal = quantity;
             }
@@ -46,12 +63,9 @@ public class GuitarSalesReporter {
             }
         }
 
-        System.out.println("############");
-        System.out.println("Sales Report");
-        System.out.println("############");
-        System.out.println();
-        System.out.println("Total sales: £" + totalSales);
-        System.out.println("Most popular category: " + mostPopularCategory);
-
+        Map<String, Object> values = new HashMap<>();
+        values.put(TOTAL_SALES, totalSales);
+        values.put(MOST_POPULAR_CATEGORY, mostPopularCategory);
+        return values;
     }
 }

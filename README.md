@@ -7,7 +7,7 @@ This application takes a CSV of sales records for a guitar shop and generates so
 Now the owner of the shop would like to have some new features added - some new reports, integration with their new
 point of sale system and HTML reporting.
 
-They would also like to ensure that that the application can be extended in the future. 
+They would also like to ensure that the application can be extended in the future. 
 
 ### Code quality 
 Take a look at the code. How could it be improved? How could it be made easier to work with in future?
