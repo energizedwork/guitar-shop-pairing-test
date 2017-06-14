@@ -1,15 +1,54 @@
 package guitarshop;
 
+import com.csvreader.CsvReader;
+
 import java.io.File;
 import java.nio.file.Files;
 import java.util.*;
 
 public class GuitarSalesReporter {
 
-    public static void main(String[] args) throws Exception {
-        File csvFile = new File("src/main/resources/sales.csv");
-        List<String> lines = Files.readAllLines(csvFile.toPath());
+    private int totalSales = 0;
 
+    protected void addToTotalSales(final int quantity, final double price) {
+        totalSales += (quantity * price);
+    }
+
+    protected static List<String> readCsv(String filePath) {
+
+        //final StringBuilder csvData = new StringBuilder();
+        final List<String> csvData = new ArrayList<String>();
+
+        try {
+            final CsvReader csvFile = new CsvReader(filePath);
+
+            while (csvFile.readRecord()) {
+                csvData.add(csvFile.getRawRecord());
+
+                int quantity = Integer.parseInt(cells[3]);
+                double price = Double.parseDouble(cells[4]);
+                totalSales += (quantity * price);
+            }
+        } catch (Exception ex) {
+            throw new RuntimeException(ex);
+        }
+
+        //return csvData.toString();
+        return csvData;
+    }
+
+    /**
+     * For a given CSV file (path) generate a Sale Report.
+     * @param fileName
+     * @return
+     */
+    protected static String generateSalesReport(final String fileName) {
+
+        // List<String> lines = Files.readAllLines(csvFile.toPath());
+        List<String> lines = readCsv(fileName);
+
+        int quantity = Integer.parseInt(cells[3]);
+        double price = Double.parseDouble(cells[4]);
         double totalSales = 0d;
         for (int i = 1; i < lines.size(); i++) {
             String[] cells = lines.get(i).split(",");
@@ -28,7 +67,7 @@ public class GuitarSalesReporter {
             Integer existingCategoryCount = categories.get(category);
             int newTotal;
             if (existingCategoryCount != null) {
-                 newTotal = existingCategoryCount + quantity;
+                newTotal = existingCategoryCount + quantity;
             } else {
                 newTotal = quantity;
             }
@@ -46,12 +85,20 @@ public class GuitarSalesReporter {
             }
         }
 
-        System.out.println("############");
-        System.out.println("Sales Report");
-        System.out.println("############");
-        System.out.println();
-        System.out.println("Total sales: £" + totalSales);
-        System.out.println("Most popular category: " + mostPopularCategory);
+        final StringBuilder salesReport = new StringBuilder();
+        salesReport.append("############\n");
+        salesReport.append("Sales Report\n");
+        salesReport.append("############\n");
+        salesReport.append("\n");
+        salesReport.append("Total sales: £" + totalSales + "\n");
+        salesReport.append("Most popular category: " + mostPopularCategory);
 
+        return salesReport.toString();
+    }
+
+    public static void main(String[] args) throws Exception {
+        File csvFile = new File("src/main/resources/sales.csv");
+
+        System.out.println(generateSalesReport(csvFile.toPath().toString()));
     }
 }
