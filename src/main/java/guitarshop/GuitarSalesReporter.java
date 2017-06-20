@@ -6,7 +6,27 @@ import java.util.*;
 
 public class GuitarSalesReporter {
 
+    private final MostPopularCategoryCalculator mostPopularCategoryCalculator;
+    private final CategoryParser categoryParser;
+
+    public GuitarSalesReporter() {
+        this(new MostPopularCategoryCalculator(), new CategoryParser());
+    }
+
+    public GuitarSalesReporter(
+            final MostPopularCategoryCalculator mostPopularCategoryCalculator,
+            final CategoryParser categoryParser) {
+        this.mostPopularCategoryCalculator = mostPopularCategoryCalculator;
+        this.categoryParser = categoryParser;
+    }
+
     public static void main(String[] args) throws Exception {
+        final String report = new GuitarSalesReporter().prepareReport();
+        System.out.println(report);
+    }
+
+    public String prepareReport() throws Exception {
+
         File csvFile = new File("src/main/resources/sales.csv");
         List<String> lines = Files.readAllLines(csvFile.toPath());
 
@@ -19,39 +39,23 @@ public class GuitarSalesReporter {
             totalSales += (quantity * price);
         }
 
-        HashMap<String, Integer> categories = new HashMap<>();
-        for (int i = 1; i < lines.size(); i++) {
-            String[] cells = lines.get(i).split(",");
-            if (cells.length < 5) continue;
-            String category = cells[2];
-            int quantity = Integer.parseInt(cells[3]);
-            Integer existingCategoryCount = categories.get(category);
-            int newTotal;
-            if (existingCategoryCount != null) {
-                 newTotal = existingCategoryCount + quantity;
-            } else {
-                newTotal = quantity;
-            }
-            categories.put(category, newTotal);
-        }
+        final Map<String,Integer> categories = categoryParser.countVolumesByCategory(lines);
+        final String mostPopularCategory = mostPopularCategoryCalculator.calculate(categories);
 
-        int biggestSoFar = 0;
-        String mostPopularCategory = null;
-        for (Iterator<String> iterator = categories.keySet().iterator(); iterator.hasNext(); ) {
-            String key = iterator.next();
-            int quantity = categories.get(key);
-            if (quantity > biggestSoFar) {
-                mostPopularCategory = key;
-                biggestSoFar = quantity;
-            }
-        }
+        final StringBuilder output = new StringBuilder();
+        output.append("############");
+        output.append(System.lineSeparator());
+        output.append("Sales Report");
+        output.append(System.lineSeparator());
+        output.append("############");
+        output.append(System.lineSeparator());
+        output.append(System.lineSeparator());
+        output.append("Total sales: £" + totalSales);
+        output.append(System.lineSeparator());
+        output.append("Most popular category: " + mostPopularCategory);
+        output.append(System.lineSeparator());
 
-        System.out.println("############");
-        System.out.println("Sales Report");
-        System.out.println("############");
-        System.out.println();
-        System.out.println("Total sales: £" + totalSales);
-        System.out.println("Most popular category: " + mostPopularCategory);
-
+        return output.toString();
     }
+    
 }
